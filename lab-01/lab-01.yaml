@@ -304,12 +304,6 @@ Resources:
         FromPort: '22'
         ToPort: '22'
         CidrIp: !Join ["/", [!Ref srcIp, "32"]]
-      # Allow outbound NTP connections to reduce the noise in flow logs 
-      SecurityGroupEgress:
-      - IpProtocol: tcp
-        FromPort: '123'
-        ToPort: '123'
-        CidrIp: '0.0.0.0/0'
       Tags:
         - Key: Name
           Value: !Join ["-", ["sg", !Ref "AWS::StackName"]]
