@@ -1,6 +1,6 @@
 # Lab-01: Build and test the working configuration
 
-The first lab deploys what should be the final working configuration so that we can check that the SSH key is being used correctly.
+The first lab deploys what should be the final working configuration so that we can check that everything works including SSH from your desktop.
 
 The environment built by this template includes the following:
 - VPC
@@ -9,6 +9,8 @@ The environment built by this template includes the following:
 - Network ACL
 - Security Group
 - EC2 t2.micro Amazon linux instance
+- VPC Flow Logs
+- CloudWatch Logs
 
 ## Setup
 
@@ -35,6 +37,8 @@ To run each lab:
 
 ## Build
 
+This stack should take less than 2 minutes to deploy.
+
 * Select `Create Stack` -> `Upload a template to Amazon S3` and select the template from this lab
 
 * Enter a name for the stack like `ec2-ssh-lab`
@@ -51,6 +55,8 @@ To run each lab:
 
 ## Test
 
+Now that the instance has been deployed, make sure that you can SSH to the host.
+
 * Once the stack has built, select the `Outputs` tab
 
 * If you are on Linux/MacOSX, the SSH command line is displayed to connect to the host
@@ -59,14 +65,38 @@ To run each lab:
 
 * Connect to the host using ssh/PuTTY
 
+The template also sets up flow logs for the VPC. So navigate to `CloudWatch` -> `Logs`
+and you should see a log group for this lab. Depending on what you called your stack,
+it will be called `loggrp-vpc-ec2-ssh-lab`.
+
+It can take several minutes for AWS to provision the flow log so you may have to wait
+before you see anything in that log group. Once it is established you should see an
+entry for the elastic network interface (ENI) and when you select that, a log of 
+network activity to your VPC.
+
+This feed is not in real time, it will take several minutes to refresh with the latest
+data. What you should see is traffic from your desktop to your instance on port 22 
+and Network Time Protocol (NTP) traffic from the instance on port 123 being ACCEPTED,
+as defined in the security group.
+
+You will also see traffic from other external sources and maybe from the instance itself
+to other services being REJECTED. This is why it is important to lock down your security
+groups and NACLs.
+
+If you are unfamiliar with the flow logs format, see this [document](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html#flow-log-records).
+
 ## Troubleshooting
 
 If you cannot connect to the host, the problem is most likely at your desktop end of the connection.
 
-Check that
+Check that...
 
 * You are specifying the correct path to the SSH key file
 
-* Check you have changed the permissions on the key file so only you can read it
+* You have changed the permissions on the key file so only you can read it
 
-* Check that your firewall is not blocking connections on port 22
+* You are logging in as ec2-user
+
+* Your firewall is not blocking connections on port 22
+
+Any issues need to be resolved before proceeding with the other labs.

@@ -2,9 +2,10 @@
 
 For someone new to AWS and maybe new to UNIX-based commands as well, setting up a new VPC with an EC2 instance and connecting to that instance via SSH can be challenging. If something is not configured correctly it can be difficult to find and fix the problem.
 
-This lab is designed to help someone learn how to investigate and fix potential problems by intentionally creating a "broken" environment and over a number of labs fix that environment until it works.
+This course is designed to help someone learn how to investigate and fix potential problems by intentionally creating broken environments in each lab which need to be fixed.
 
-At this time the infrastructure setup is in cloud formation templates, since this was quicker for me to define, test and repeat than using the console. If the structure of the lab is helpful, I may then invest the effort to describe the same steps in the console (which is where the target audience are likely to setup infrastructure) and even the command line.
+At this time the infrastructure setup is in cloud formation templates, since this was quicker for me to define, test and repeat than using the console. If the structure of the lab is helpful, then it makes sense to invest the effort to describe the same steps in the console, which is where the target audience are likely to setup infrastructure.
+
 
 ## Assumptions
 
@@ -15,6 +16,11 @@ At this time the infrastructure setup is in cloud formation templates, since thi
 
 * You know how to generate and work with SSH keys, including using PuTTY on Windows
   * See [Connecting to Your Linux Instance from Windows Using PuTTY](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html)
+
+
+## Cost
+
+The lab provisions a t2.micro instance which is in the free tier, but it also establishes a VPC flow log to CloudWatch which may incur some small charges.
 
 
 ## Instructions
@@ -54,7 +60,10 @@ To run each lab:
 
 * For the first lab, *create* a new stack and open the template in lab-01
 
-* For each subsequent lab, select the stack created in lab-01 and *update* it by selecting `Actions` -> `Update Stack`. This will modify the existing resources.
+* For each subsequent lab, select the stack created in lab-01 and *update* it by selecting `Actions` -> `Update Stack`. This will modify the existing resources and introduce the problem to be fixed.
+
+* Once you understand the issue and see what errors you see from trying to connect via SSH, update the stack again using the template from lab-01.
+
 
 ## Clean up
 
