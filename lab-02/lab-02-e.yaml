@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: "2010-09-09"
 
-Description: Lab-02-D Tight NACL definition
+Description: Lab-02-E Inbound port 22, outbound unprivileged port rules
 
 Metadata:
   AWS::CloudFormation::Interface:

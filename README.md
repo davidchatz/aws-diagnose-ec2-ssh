@@ -67,13 +67,12 @@ To run each lab:
 ## Labs
 
 * [Lab-01](./lab-01/README.md) Build and test the working configuration
-* [Lab-02](./lab-02/README.md)
+* [Lab-02](./lab-02/README.md) NACL blocking inbound or outbound connections
 
 TODO:
 * Missing internet gateway
 * No route to internet gateway
 * No inbound 22 rule in security group
-* NACL blocking inbound or outbound connections
 * Wrong SSH key
 * Instance is down
 
