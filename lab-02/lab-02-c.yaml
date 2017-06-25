@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: "2010-09-09"
 
-Description: Lab-01 Stack for complete working configuration
+Description: Lab-02-C NACL inbound and outbound open rules
 
 Metadata:
   AWS::CloudFormation::Interface:

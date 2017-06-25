@@ -77,14 +77,19 @@ entry for the elastic network interface (ENI) and when you select that, a log of
 network activity to your VPC.
 
 This feed is not in real time, it will take several minutes to refresh with the latest
-data. What you should see is traffic from your desktop to your instance on port 22 being ACCEPTED,
-as defined in the security group.
+data. What you should see is traffic from your desktop to port 22 on your instance and
+traffic from port 22 on your instance back to your desktop as ACCEPTED. Note that port
+your desktop sends and receives that traffic is a port number above 1024 and will
+vary with every connection you make. 
 
 You will also see traffic from other external sources and maybe from the instance itself
-to other services being REJECTED. This is why it is important to understand what services are needed on your instances and
-to lock down your security groups and NACLs.
+to other services being REJECTED. This is why it is important to understand what services
+are needed on your instances and to lock down your security groups and NACLs.
+
+Enter your desktop IP address in the search so that you can just your traffic to the instance.
 
 If you are unfamiliar with the flow logs format, see this [document](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html#flow-log-records).
+
 
 ## Review
 
