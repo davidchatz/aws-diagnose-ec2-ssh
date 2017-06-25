@@ -65,6 +65,8 @@ Now that the instance has been deployed, make sure that you can SSH to the host.
 
 * Connect to the host using ssh/PuTTY
 
+## Monitoring
+
 The template also sets up flow logs for the VPC. So navigate to `CloudWatch` -> `Logs`
 and you should see a log group for this lab. Depending on what you called your stack,
 it will be called `loggrp-vpc-ec2-ssh-lab`.
@@ -75,15 +77,28 @@ entry for the elastic network interface (ENI) and when you select that, a log of
 network activity to your VPC.
 
 This feed is not in real time, it will take several minutes to refresh with the latest
-data. What you should see is traffic from your desktop to your instance on port 22 
-and Network Time Protocol (NTP) traffic from the instance on port 123 being ACCEPTED,
+data. What you should see is traffic from your desktop to your instance on port 22 being ACCEPTED,
 as defined in the security group.
 
 You will also see traffic from other external sources and maybe from the instance itself
-to other services being REJECTED. This is why it is important to lock down your security
-groups and NACLs.
+to other services being REJECTED. This is why it is important to understand what services are needed on your instances and
+to lock down your security groups and NACLs.
 
 If you are unfamiliar with the flow logs format, see this [document](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html#flow-log-records).
+
+## Review
+
+In the console you should look at how each component is configured, including:
+
+* VPC `vpc-ec2-ssh-lab`
+  * Note that the template does not use the default route table and nacl defined with the VPC.
+  * TODO: Consider changing the template so it does.
+* Subnets `sn-ec2-ssh-lab`
+* Route Table `rt-ec2-ssh-lab`
+* Internet Gateway `ig-ec2-ssh-lab`
+* NACL `nacl-ec2-ssh-lab`
+* Security Group `secgrp-ec2-ssh-lab`
+* EC2 Instance `inst-ec2-ssh-lab`
 
 ## Troubleshooting
 
