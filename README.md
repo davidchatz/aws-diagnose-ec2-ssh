@@ -62,8 +62,20 @@ To run each lab:
 
 * For each subsequent lab, select the stack created in lab-01 and *update* it by selecting `Actions` -> `Update Stack`. This will modify the existing resources and introduce the problem to be fixed.
 
-* Once you understand the issue and see what errors you see from trying to connect via SSH, update the stack again using the template from lab-01.
+* Once you understand the issue and see what errors you see from trying to connect via SSH, update the stack again using the template from lab-01 to restore access to the instance.
 
+## Labs
+
+* [Lab-01](./lab-01/README.md) Build and test the working configuration
+* [Lab-02](./lab-02/README.md)
+
+TODO:
+* Missing internet gateway
+* No route to internet gateway
+* No inbound 22 rule in security group
+* NACL blocking inbound or outbound connections
+* Wrong SSH key
+* Instance is down
 
 ## Clean up
 
