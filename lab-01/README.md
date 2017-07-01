@@ -14,7 +14,7 @@ The environment built by this template includes the following:
 
 as you can see in the following digram:
 
-![Network Diagram](./SSH_EC2_Network_Diag.png "Network Diagram")
+![Network Diagram](./lab-01-network.png "Network Diagram")
 
 ## Setup
 
