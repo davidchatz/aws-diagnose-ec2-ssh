@@ -16,6 +16,8 @@ range on unprivileged ports.
 The first [lab-02 template](lab-02-a.yaml) removes the allow rules from the
 NACL leaving only the default deny rules.
 
+![](lab-02-a-NACL.png)
+
 Update the stack using this template, taking note of the set of changes
 CloudFormation is going to apply. In the console review the inbound
 and outbound rules in the NACL `nacl-ec2-ssh-lab`.
@@ -28,6 +30,8 @@ ssh. In CloudWatch you will see this flagged as REJECTED.
 
 The [second template](lab-02-b.yaml) adds an open (all traffic) inbound
 allow rule to the NACL. 
+
+![](lab-02-b-NACL.png)
 
 Apply this update and attempt to connect via SSH again. Despite your
 SSH connection request reaching your instance, the return packets are
@@ -44,6 +48,7 @@ knowing that the connection was partially successful.
 The [third template](lab-02-c.yaml) reinstates both the inbound and
 outbound open rules. You should now be able to connect again.
 
+![](../lab-01/lab-01-network.png)
 
 ## Inbound and outbound port 22 rules
 

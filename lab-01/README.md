@@ -12,6 +12,10 @@ The environment built by this template includes the following:
 - VPC Flow Logs
 - CloudWatch Logs
 
+as you can see in the following digram:
+
+![Network Diagram](./SSH_EC2_Network_Diag.png "Network Diagram")
+
 ## Setup
 
 To run each lab:
