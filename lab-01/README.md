@@ -101,7 +101,32 @@ If you are unfamiliar with the flow logs format, see this [document](http://docs
 To look at network traffic sent from and received by your desktop, tools like
 [wireshark](https://www.wireshark.org) can snoop, capture and describe network packets. 
 
+If you capture a session and then filter by `tcp.port == 22`you will see something like
+this (`192.168.0.24` is the IP address of my desktop and `13.55.65.148` was the IP
+address of my ec2 instance):
 
+```txt
+No.     Time           Source                Destination           Protocol Length Info
+     29 2.377782       192.168.0.24          13.55.65.148          TCP      66     50797 → 22 [SYN] Seq=0 Win=64240 Len=0 MSS=1460 WS=256 SACK_PERM=1
+     30 2.402098       13.55.65.148          192.168.0.24          TCP      66     22 → 50797 [SYN, ACK] Seq=0 Ack=1 Win=26883 Len=0 MSS=1460 SACK_PERM=1 WS=128
+     31 2.402185       192.168.0.24          13.55.65.148          TCP      54     50797 → 22 [ACK] Seq=1 Ack=1 Win=65536 Len=0
+     32 2.403605       192.168.0.24          13.55.65.148          SSHv2    75     Client: Protocol (SSH-2.0-OpenSSH_7.3)
+     33 2.430682       13.55.65.148          192.168.0.24          SSHv2    77     Server: Protocol (SSH-2.0-OpenSSH_6.6.1)
+     34 2.431569       13.55.65.148          192.168.0.24          TCP      124    22 → 50797 [ACK] Seq=24 Ack=22 Win=27008 Len=0 [ETHERNET FRAME CHECK SEQUENCE INCORRECT]
+     35 2.436093       192.168.0.24          13.55.65.148          SSHv2    1486   Client: Key Exchange Init
+     36 2.436143       13.55.65.148          192.168.0.24          TCP      1514   [TCP segment of a reassembled PDU]
+     37 2.436180       192.168.0.24          13.55.65.148          TCP      54     50797 → 22 [ACK] Seq=1454 Ack=1484 Win=65536 Len=0
+     41 2.460165       13.55.65.148          192.168.0.24          SSHv2    234    Server: Key Exchange Init
+     42 2.460203       192.168.0.24          13.55.65.148          TCP      54     50797 → 22 [ACK] Seq=1454 Ack=1664 Win=65280 Len=0
+     47 2.462506       192.168.0.24          13.55.65.148          SSHv2    102    Client: Diffie-Hellman Key Exchange Init
+     51 2.489175       13.55.65.148          192.168.0.24          SSHv2    334    Server: Diffie-Hellman Key Exchange Reply, New Keys
+     52 2.530155       192.168.0.24          13.55.65.148          TCP      54     50797 → 22 [ACK] Seq=1502 Ack=1944 Win=65024 Len=0
+     99 4.949920       192.168.0.24          13.55.65.148          SSHv2    70     Client: New Keys
+    100 5.014890       13.55.65.148          192.168.0.24          TCP      124    22 → 50797 [ACK] Seq=1944 Ack=1518 Win=29824 Len=0 [ETHERNET FRAME CHECK SEQUENCE INCORRECT]
+    101 5.014913       192.168.0.24          13.55.65.148          SSHv2    98     Client: Encrypted packet (len=44)
+    102 5.038701       13.55.65.148          192.168.0.24          TCP      124    22 → 50797 [ACK] Seq=1944 Ack=1562 Win=29824 Len=0 [ETHERNET FRAME CHECK SEQUENCE INCORRECT]
+    103 5.038701       13.55.65.148          192.168.0.24          SSHv2    98     Server: Encrypted packet (len=44)
+```
 
 
 ## Review
