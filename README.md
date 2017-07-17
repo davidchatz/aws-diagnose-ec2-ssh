@@ -68,6 +68,10 @@ To run each lab:
 
 * [Lab-01](./lab-01/README.md) Build and test the working configuration
 * [Lab-02](./lab-02/README.md) NACL blocking inbound or outbound connections
+* [Lab-03](./lab-03/README.yaml) Internet gateway misconfiguration
+* [Lab-04](./lab-04/README.yaml) Security group misconfiguration
+* [Lab-05](./lab-05/README.yaml) Instance is down
+* [Lab-06](./lab-06/README.yaml) Using the wrong SSH key
 
 TODO:
 * Missing internet gateway

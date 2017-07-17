@@ -71,6 +71,8 @@ Now that the instance has been deployed, make sure that you can SSH to the host.
 
 ## Monitoring
 
+### VPC Flow Logs
+
 The template also sets up flow logs for the VPC. So navigate to `CloudWatch` -> `Logs`
 and you should see a log group for this lab. Depending on what you called your stack,
 it will be called `loggrp-vpc-ec2-ssh-lab`.
@@ -93,6 +95,13 @@ are needed on your instances and to lock down your security groups and NACLs.
 Enter your desktop IP address in the search so that you can just your traffic to the instance.
 
 If you are unfamiliar with the flow logs format, see this [document](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/flow-logs.html#flow-log-records).
+
+### Wireshark
+
+To look at network traffic sent from and received by your desktop, tools like
+[wireshark](https://www.wireshark.org) can snoop, capture and describe network packets. 
+
+
 
 
 ## Review
